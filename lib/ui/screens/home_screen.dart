@@ -123,39 +123,43 @@ class HomeScreen extends StatelessWidget {
                         children: categories.map((category) {
                           return Card(
                             margin: EdgeInsets.zero,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: [
-                                  Expanded(
-                                    flex: 3,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0),
-                                        image: DecorationImage(
-                                          image: AssetImage(
-                                              'assets/${category.imageName}'), // Your asset image
-                                          fit: BoxFit
-                                              .cover, // This makes the image cover the container
+                            child: InkWell(
+                              onTap: () {},
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Expanded(
+                                      flex: 3,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15.0),
+                                          image: DecorationImage(
+                                            image: AssetImage(
+                                                'assets/${category.imageName}'), // Your asset image
+                                            fit: BoxFit
+                                                .cover, // This makes the image cover the container
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Text(
-                                          category.categoryName,
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .labelSmall,
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
+                                    Expanded(
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            category.categoryName,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .labelSmall,
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                           );
@@ -172,37 +176,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-// (index) => Container(
-//   padding: EdgeInsets.all(8.0),
-//   decoration: BoxDecoration(
-//       color:
-//           Theme.of(context).colorScheme.onSecondary,
-//       borderRadius: BorderRadius.circular(13.0)),
-//   child: Column(
-//     children: [
-//       Expanded(
-//         flex: 3,
-//         child: Container(
-//           decoration: BoxDecoration(
-//             borderRadius: BorderRadius.circular(22.0),
-//             image: DecorationImage(
-//               image: AssetImage(
-//                   'assets/chemistry.jpg'), // Your asset image
-//               fit: BoxFit
-//                   .cover, // This makes the image cover the container
-//             ),
-//           ),
-//         ),
-//       ),
-//       Expanded(
-//         child: Center(
-//             child: Text(
-//           'Helll Na',
-//           style:
-//               Theme.of(context).textTheme.labelSmall,
-//         )),
-//       )
-//     ],
-//   ),
-// ),
