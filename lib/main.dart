@@ -21,11 +21,11 @@ class QuizApp extends StatelessWidget {
           primary: kBaseDarkPurple,
           onPrimary: kBaseSecondary,
           secondary: kBaseSecondary,
-          onSecondary: kBaseDarkPurple,
+          onSecondary: kDefaultCardColor,
           error: Colors.red,
           onError: Colors.white,
           background: kBaseDarkPurple,
-          onBackground: kBaseDarkPurple,
+          onBackground: kBaseSecondary,
           surface: kDefaultCardColor,
           onSurface: kBaseDarkPurple,
         ),
@@ -39,7 +39,22 @@ class QuizApp extends StatelessWidget {
           ),
         ),
         textTheme: const TextTheme(
-            displayMedium: TextStyle(fontFamily: 'Frijole', fontSize: 22.0)),
+          displayMedium: TextStyle(fontFamily: 'Frijole', fontSize: 22.0),
+          headlineMedium: TextStyle(
+              fontFamily: 'Quicksand',
+              fontVariations: [FontVariation('wght', 700.0)],
+              fontSize: 22.0),
+          bodySmall: TextStyle(
+            fontFamily: 'Quicksand',
+            fontSize: 13.0,
+            fontVariations: [FontVariation('wght', 400.0)],
+          ),
+          labelSmall: TextStyle(
+            fontFamily: 'Quicksand',
+            fontSize: 14.0,
+            fontVariations: [FontVariation('wght', 700.0)],
+          ),
+        ),
       ),
     );
   }
