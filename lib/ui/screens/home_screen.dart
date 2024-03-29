@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quiz_app/data/categories_data.dart';
+import 'dart:math';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -72,9 +73,12 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 minimumSize: Size.zero,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/quiz',
+                                    arguments: categories[Random().nextInt(5)]);
+                              },
                               child: Text(
-                                'Start Now',
+                                'Quick start',
                                 style: Theme.of(context).textTheme.labelSmall,
                               ),
                             ),
@@ -124,14 +128,17 @@ class HomeScreen extends StatelessWidget {
                           return Card(
                             margin: EdgeInsets.zero,
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.pushNamed(context, '/quiz',
+                                    arguments: category);
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
                                     Expanded(
-                                      flex: 3,
                                       child: Container(
+                                        height: 100.0,
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(15.0),
@@ -144,19 +151,20 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    Expanded(
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.end,
-                                        children: [
-                                          Text(
-                                            category.categoryName,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .labelSmall,
-                                          ),
-                                        ],
-                                      ),
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          category.category
+                                              .toString()
+                                              .split('.')
+                                              .last,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .labelSmall,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ],
                                     )
                                   ],
                                 ),

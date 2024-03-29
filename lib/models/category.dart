@@ -1,9 +1,17 @@
 import 'question.dart';
 
-class Category {
+enum CategoryEnum {
+  Sports,
+  Economics,
+  Architecture,
+  Astronomy,
+  Chemistry,
+}
+
+class QuizCategory {
   String imageName;
-  String categoryName;
+  CategoryEnum category;
   List<Question> questions = [];
 
-  Category({required this.imageName, required this.categoryName});
+  QuizCategory({required this.imageName, required this.category});
 }

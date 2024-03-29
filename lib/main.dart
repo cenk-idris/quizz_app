@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/categories_data.dart';
+import 'package:quiz_app/models/category.dart';
 import 'utils/constants.dart';
 import 'ui/screens/home_screen.dart';
+import 'ui/screens/quiz_screen.dart';
 
 void main() {
   runApp(const QuizApp());
@@ -13,7 +16,18 @@ class QuizApp extends StatelessWidget {
     return MaterialApp(
       title: 'Quiz App Demo',
       initialRoute: '/',
-      routes: {'/': (context) => HomeScreen()},
+      routes: {
+        '/': (context) => HomeScreen(),
+        '/quiz': (context) {
+          // Retrieve the passed argument
+          final selectedCategory =
+              ModalRoute.of(context)!.settings.arguments as QuizCategory;
+
+          return QuizScreen(
+            selectedCategory: selectedCategory,
+          );
+        },
+      },
       theme: ThemeData(
         // Generate a color scheme from a seed color
         colorScheme: const ColorScheme(
