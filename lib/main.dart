@@ -54,6 +54,10 @@ class QuizApp extends StatelessWidget {
         ),
         textTheme: const TextTheme(
           displayMedium: TextStyle(fontFamily: 'Frijole', fontSize: 22.0),
+          headlineLarge: TextStyle(
+              fontFamily: 'Quicksand',
+              fontVariations: [FontVariation('wght', 700.0)],
+              fontSize: 25.0),
           headlineMedium: TextStyle(
               fontFamily: 'Quicksand',
               fontVariations: [FontVariation('wght', 700.0)],
@@ -63,10 +67,20 @@ class QuizApp extends StatelessWidget {
             fontSize: 13.0,
             fontVariations: [FontVariation('wght', 400.0)],
           ),
-          labelSmall: TextStyle(
+          labelLarge: TextStyle(
+            fontFamily: 'Quicksand',
+            fontSize: 20.0,
+            fontVariations: [FontVariation('wght', 700.0)],
+          ),
+          labelMedium: TextStyle(
             fontFamily: 'Quicksand',
             fontSize: 14.0,
             fontVariations: [FontVariation('wght', 700.0)],
+          ),
+          labelSmall: TextStyle(
+            fontFamily: 'Quicksand',
+            fontSize: 14.0,
+            fontVariations: [FontVariation('wght', 400.0)],
           ),
         ),
       ),

@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quiz_app/data/categories_data.dart';
 import 'dart:math';
+import 'package:quiz_app/utils/utilities.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -79,7 +80,7 @@ class HomeScreen extends StatelessWidget {
                               },
                               child: Text(
                                 'Quick start',
-                                style: Theme.of(context).textTheme.labelSmall,
+                                style: Theme.of(context).textTheme.labelMedium,
                               ),
                             ),
                           ],
@@ -155,10 +156,7 @@ class HomeScreen extends StatelessWidget {
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
                                         Text(
-                                          category.category
-                                              .toString()
-                                              .split('.')
-                                              .last,
+                                          enumToString(category.category),
                                           style: Theme.of(context)
                                               .textTheme
                                               .labelSmall,

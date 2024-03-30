@@ -1,10 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_app/data/categories_data.dart';
 import 'package:quiz_app/models/category.dart';
 import 'package:quiz_app/providers/quiz_provider.dart';
 import 'package:quiz_app/utils/constants.dart';
+import 'package:quiz_app/utils/utilities.dart';
 
 class QuizScreen extends StatelessWidget {
   final QuizCategory selectedCategory;
@@ -15,45 +17,111 @@ class QuizScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => QuizProvider(category: selectedCategory),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            selectedCategory.category.toString(),
-            style: TextStyle(color: kBaseDarkPurple),
-          ),
+      child: Consumer<QuizProvider>(builder: (context, quiz, child) {
+        return Scaffold(
           backgroundColor: Theme.of(context).colorScheme.secondary,
-          foregroundColor: Theme.of(context).colorScheme.primary,
-        ),
-        backgroundColor: Theme.of(context).colorScheme.secondary,
-        body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Expanded(
-                flex: 3,
-                child: Container(
-                  height: 200.0,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
-                    image: DecorationImage(
-                        image:
-                            AssetImage('assets/${selectedCategory.imageName}'),
-                        fit: BoxFit.cover),
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 7,
-                child: Text(
-                  selectedCategory.category.toString(),
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ),
-            ],
+          appBar: AppBar(
+            title: Text(
+              enumToString(selectedCategory.category),
+              style: TextStyle(color: kBaseDarkPurple),
+            ),
+            backgroundColor: Theme.of(context).colorScheme.secondary,
+            foregroundColor: Theme.of(context).colorScheme.primary,
           ),
-        ),
-      ),
+          body: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    height: 200.0,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/${quiz.category.imageName}'),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 7,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15.0),
+                          child: Row(
+                            children: [
+                              Text(
+                                quiz.getQuestionLevel(),
+                                style: Theme.of(context).textTheme.labelSmall,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Text(
+                          quiz.getCurrentQuestion(),
+                          style: Theme.of(context).textTheme.headlineLarge,
+                        )
+                      ],
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 15.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              quiz.nextQuestion();
+                            },
+                            child: Text('True'),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green.shade400,
+                              foregroundColor: Colors.white,
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    10), // Rounded corners
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 20.0, horizontal: 5.0),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 20.0,
+                        ),
+                        Expanded(
+                          child: ElevatedButton(
+                            onPressed: () {
+                              quiz.nextQuestion();
+                            },
+                            child: Text('False'),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red.shade400,
+                              foregroundColor: Colors.white,
+                              elevation: 5,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(
+                                    10), // Rounded corners
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 20.0, horizontal: 5.0),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        );
+      }),
     );
   }
 }
