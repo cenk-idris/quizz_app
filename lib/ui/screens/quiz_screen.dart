@@ -75,7 +75,16 @@ class QuizScreen extends StatelessWidget {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
-                              quiz.nextQuestion();
+                              quiz.proceedQuiz(
+                                  userAnswer: true,
+                                  onQuizCompleted: () {
+                                    Navigator.of(context)
+                                        .pushNamedAndRemoveUntil(
+                                      '/result',
+                                      (route) => false,
+                                      arguments: quiz.score,
+                                    );
+                                  });
                             },
                             child: Text('True'),
                             style: ElevatedButton.styleFrom(
@@ -97,7 +106,14 @@ class QuizScreen extends StatelessWidget {
                         Expanded(
                           child: ElevatedButton(
                             onPressed: () {
-                              quiz.nextQuestion();
+                              quiz.proceedQuiz(
+                                userAnswer: false,
+                                onQuizCompleted: () {
+                                  Navigator.of(context).pushNamedAndRemoveUntil(
+                                      '/result', (route) => false,
+                                      arguments: quiz.score);
+                                },
+                              );
                             },
                             child: Text('False'),
                             style: ElevatedButton.styleFrom(

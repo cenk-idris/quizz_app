@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/categories_data.dart';
 import 'package:quiz_app/models/category.dart';
+import 'package:quiz_app/ui/screens/result_screen.dart';
 import 'utils/constants.dart';
 import 'ui/screens/home_screen.dart';
 import 'ui/screens/quiz_screen.dart';
@@ -27,6 +28,14 @@ class QuizApp extends StatelessWidget {
             selectedCategory: selectedCategory,
           );
         },
+        '/result': (context) {
+          // retrieve the passed argument
+          final finalScore = ModalRoute.of(context)!.settings.arguments as int;
+
+          return ResulScreen(
+            score: finalScore,
+          );
+        }
       },
       theme: ThemeData(
         // Generate a color scheme from a seed color
@@ -53,7 +62,9 @@ class QuizApp extends StatelessWidget {
           ),
         ),
         textTheme: const TextTheme(
+          displayLarge: TextStyle(fontFamily: 'Frijole', fontSize: 150.0),
           displayMedium: TextStyle(fontFamily: 'Frijole', fontSize: 22.0),
+          displaySmall: TextStyle(fontFamily: 'Frijole', fontSize: 30.0),
           headlineLarge: TextStyle(
               fontFamily: 'Quicksand',
               fontVariations: [FontVariation('wght', 700.0)],
@@ -69,7 +80,7 @@ class QuizApp extends StatelessWidget {
           ),
           labelLarge: TextStyle(
             fontFamily: 'Quicksand',
-            fontSize: 20.0,
+            fontSize: 16.0,
             fontVariations: [FontVariation('wght', 700.0)],
           ),
           labelMedium: TextStyle(
