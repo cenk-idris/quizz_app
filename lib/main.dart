@@ -18,7 +18,7 @@ class QuizApp extends StatelessWidget {
       title: 'Quiz App Demo',
       initialRoute: '/',
       routes: {
-        '/': (context) => HomeScreen(),
+        '/': (context) => const HomeScreen(),
         '/quiz': (context) {
           // Retrieve the passed argument
           final selectedCategory =

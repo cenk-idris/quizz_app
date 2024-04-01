@@ -1,17 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:quiz_app/data/categories_data.dart';
 import 'dart:math';
 import 'package:quiz_app/utils/utilities.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('QUIZZ'),
+        title: const Text('QUIZZ'),
       ),
       body: Column(
         children: [
@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
                                           .colorScheme
                                           .onPrimary),
                             ),
-                            Container(
+                            SizedBox(
                               width: 200.0,
                               child: Text(
                                 'Use quick start button or pick a category',
@@ -62,13 +62,13 @@ class HomeScreen extends StatelessWidget {
                             ),
                             ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
+                                shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.all(
                                     Radius.circular(5.0),
                                   ),
                                 ),
                                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                   horizontal: 15.0,
                                   vertical: 5.0,
                                 ),
@@ -98,7 +98,7 @@ class HomeScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.secondary,
                   borderRadius:
-                      BorderRadius.only(topLeft: Radius.circular(55.0))),
+                      const BorderRadius.only(topLeft: Radius.circular(55.0))),
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(25.0, 40.0, 25.0, 0.0),
                 child: Column(
@@ -113,10 +113,10 @@ class HomeScreen extends StatelessWidget {
                           'Explore Quizzes',
                           style: Theme.of(context).textTheme.headlineMedium,
                         ),
-                        Text('VIEW ALL'),
+                        const Text('VIEW ALL'),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30.0,
                     ),
                     Expanded(

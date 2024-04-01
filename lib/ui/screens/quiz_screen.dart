@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_app/models/category.dart';
 import 'package:quiz_app/models/result.dart';
@@ -11,7 +9,7 @@ import 'package:quiz_app/utils/utilities.dart';
 class QuizScreen extends StatelessWidget {
   final QuizCategory selectedCategory;
 
-  QuizScreen({super.key, required this.selectedCategory});
+  const QuizScreen({super.key, required this.selectedCategory});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class QuizScreen extends StatelessWidget {
           appBar: AppBar(
             title: Text(
               enumToString(selectedCategory.category),
-              style: TextStyle(color: kBaseDarkPurple),
+              style: const TextStyle(color: kBaseDarkPurple),
             ),
             backgroundColor: Theme.of(context).colorScheme.secondary,
             foregroundColor: Theme.of(context).colorScheme.primary,
@@ -75,7 +73,7 @@ class QuizScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 15.0),
+                    margin: const EdgeInsets.symmetric(vertical: 15.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -97,7 +95,6 @@ class QuizScreen extends StatelessWidget {
                                 },
                               );
                             },
-                            child: Text('True'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.green.shade400,
                               foregroundColor: Colors.white,
@@ -106,12 +103,13 @@ class QuizScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(
                                     10), // Rounded corners
                               ),
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 20.0, horizontal: 5.0),
                             ),
+                            child: const Text('True'),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20.0,
                         ),
                         Expanded(
@@ -132,7 +130,6 @@ class QuizScreen extends StatelessWidget {
                                 },
                               );
                             },
-                            child: Text('False'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.red.shade400,
                               foregroundColor: Colors.white,
@@ -141,9 +138,10 @@ class QuizScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(
                                     10), // Rounded corners
                               ),
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 20.0, horizontal: 5.0),
                             ),
+                            child: const Text('False'),
                           ),
                         )
                       ],

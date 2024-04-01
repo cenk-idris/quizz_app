@@ -6,6 +6,7 @@ import 'package:quiz_app/models/question.dart';
 class QuizProvider with ChangeNotifier {
   final QuizCategory category;
   int _currentQuestionIndex = 0;
+  // ignore: prefer_final_fields
   int _score = 0;
   List<Question> _questions = [];
   final List<Icon> _scoreKeeper = [];
@@ -29,11 +30,11 @@ class QuizProvider with ChangeNotifier {
   }
 
   set questionColor(bool isAnswerCorrect) => isAnswerCorrect
-      ? _scoreKeeper[_currentQuestionIndex] = Icon(
+      ? _scoreKeeper[_currentQuestionIndex] = const Icon(
           Icons.circle_rounded,
           color: Colors.green,
         )
-      : _scoreKeeper[_currentQuestionIndex] = Icon(
+      : _scoreKeeper[_currentQuestionIndex] = const Icon(
           Icons.circle_rounded,
           color: Colors.red,
         );
@@ -44,10 +45,8 @@ class QuizProvider with ChangeNotifier {
 
   void processUserAnswer(bool userAnswer) {
     if (userAnswer == getCurrentQuestionAnswer()) {
-      print(++_score);
       questionColor = true;
     } else {
-      print(score);
       questionColor = false;
     }
   }

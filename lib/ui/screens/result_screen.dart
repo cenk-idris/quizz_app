@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/models/result.dart';
 
 class ResulScreen extends StatelessWidget {
   final Result result;
 
-  ResulScreen({required this.result});
+  const ResulScreen({super.key, required this.result});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +13,7 @@ class ResulScreen extends StatelessWidget {
         Opacity(
           opacity: 0.3,
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/background.jpg'),
                   fit: BoxFit.cover),
@@ -61,7 +60,6 @@ class ResulScreen extends StatelessWidget {
                               Navigator.pushNamedAndRemoveUntil(
                                   context, '/', (route) => false);
                             },
-                            child: Text('Main menu'),
                             style: ElevatedButton.styleFrom(
                               //backgroundColor: Colors.white,
                               backgroundColor:
@@ -73,12 +71,13 @@ class ResulScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(
                                     10), // Rounded corners
                               ),
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 15.0, horizontal: 5.0),
                             ),
+                            child: const Text('Main menu'),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20.0,
                         ),
                         Expanded(
@@ -87,7 +86,6 @@ class ResulScreen extends StatelessWidget {
                               Navigator.popAndPushNamed(context, '/quiz',
                                   arguments: result.category);
                             },
-                            child: Text('Play again'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor:
                                   Theme.of(context).colorScheme.primary,
@@ -98,9 +96,10 @@ class ResulScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(
                                     10), // Rounded corners
                               ),
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 15.0, horizontal: 5.0),
                             ),
+                            child: const Text('Play again'),
                           ),
                         )
                       ],
