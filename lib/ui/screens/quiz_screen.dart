@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
-import 'package:quiz_app/data/categories_data.dart';
 import 'package:quiz_app/models/category.dart';
 import 'package:quiz_app/models/result.dart';
 import 'package:quiz_app/providers/quiz_provider.dart';

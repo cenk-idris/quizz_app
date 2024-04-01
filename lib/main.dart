@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/data/categories_data.dart';
 import 'package:quiz_app/models/category.dart';
 import 'package:quiz_app/models/result.dart';
 import 'package:quiz_app/ui/screens/result_screen.dart';

@@ -1,11 +1,11 @@
 import 'question.dart';
 
 enum CategoryEnum {
-  Sports,
-  Economics,
-  Architecture,
-  Astronomy,
-  Chemistry,
+  sports,
+  economics,
+  architecture,
+  astronomy,
+  chemistry,
 }
 
 class QuizCategory {

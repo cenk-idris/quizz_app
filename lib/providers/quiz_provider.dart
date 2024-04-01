@@ -1,8 +1,3 @@
-import 'dart:ffi';
-import 'dart:io';
-import 'dart:math';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/questions_data.dart';
 import 'package:quiz_app/models/category.dart';
@@ -13,7 +8,7 @@ class QuizProvider with ChangeNotifier {
   int _currentQuestionIndex = 0;
   int _score = 0;
   List<Question> _questions = [];
-  List<Icon> _scoreKeeper = [];
+  final List<Icon> _scoreKeeper = [];
 
   QuizProvider({required this.category}) {
     initializeQuestions();
