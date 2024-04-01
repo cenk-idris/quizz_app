@@ -6,7 +6,6 @@ import 'package:quiz_app/models/question.dart';
 class QuizProvider with ChangeNotifier {
   final QuizCategory category;
   int _currentQuestionIndex = 0;
-  // ignore: prefer_final_fields
   int _score = 0;
   List<Question> _questions = [];
   final List<Icon> _scoreKeeper = [];
@@ -45,6 +44,7 @@ class QuizProvider with ChangeNotifier {
 
   void processUserAnswer(bool userAnswer) {
     if (userAnswer == getCurrentQuestionAnswer()) {
+      ++_score;
       questionColor = true;
     } else {
       questionColor = false;
