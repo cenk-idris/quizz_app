@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:quiz_app/data/categories_data.dart';
 import 'package:quiz_app/models/category.dart';
+import 'package:quiz_app/models/result.dart';
 import 'package:quiz_app/providers/quiz_provider.dart';
 import 'package:quiz_app/utils/constants.dart';
 import 'package:quiz_app/utils/utilities.dart';
@@ -44,6 +45,13 @@ class QuizScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: quiz.scoreKeeper,
+                    ),
+                  ),
                   Expanded(
                     flex: 7,
                     child: Column(
@@ -61,7 +69,7 @@ class QuizScreen extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          quiz.getCurrentQuestion(),
+                          quiz.getCurrentQuestionString(),
                           style: Theme.of(context).textTheme.headlineLarge,
                         )
                       ],
@@ -76,15 +84,19 @@ class QuizScreen extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {
                               quiz.proceedQuiz(
-                                  userAnswer: true,
-                                  onQuizCompleted: () {
-                                    Navigator.of(context)
-                                        .pushNamedAndRemoveUntil(
-                                      '/result',
-                                      (route) => false,
-                                      arguments: quiz.score,
-                                    );
-                                  });
+                                userAnswer: true,
+                                onQuizCompleted: () {
+                                  Result result = Result(
+                                    score: quiz.score,
+                                    totalQuestions: quiz.getNumberOfQuestions(),
+                                    category: selectedCategory,
+                                  );
+
+                                  Navigator.of(context).pushNamedAndRemoveUntil(
+                                      '/result', (route) => false,
+                                      arguments: result);
+                                },
+                              );
                             },
                             child: Text('True'),
                             style: ElevatedButton.styleFrom(
@@ -109,9 +121,15 @@ class QuizScreen extends StatelessWidget {
                               quiz.proceedQuiz(
                                 userAnswer: false,
                                 onQuizCompleted: () {
+                                  Result result = Result(
+                                    score: quiz.score,
+                                    totalQuestions: quiz.getNumberOfQuestions(),
+                                    category: selectedCategory,
+                                  );
+
                                   Navigator.of(context).pushNamedAndRemoveUntil(
                                       '/result', (route) => false,
-                                      arguments: quiz.score);
+                                      arguments: result);
                                 },
                               );
                             },

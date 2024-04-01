@@ -1,10 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quiz_app/models/result.dart';
 
 class ResulScreen extends StatelessWidget {
-  final int score;
+  final Result result;
 
-  ResulScreen({required this.score});
+  ResulScreen({required this.result});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class ResulScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.baseline,
                       children: [
                         Text(
-                          score.toString(),
+                          result.score.toString(),
                           style: Theme.of(context).textTheme.displayLarge,
                         ),
                         Text(
@@ -56,7 +57,10 @@ class ResulScreen extends StatelessWidget {
                       children: [
                         Expanded(
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamedAndRemoveUntil(
+                                  context, '/', (route) => false);
+                            },
                             child: Text('Main menu'),
                             style: ElevatedButton.styleFrom(
                               //backgroundColor: Colors.white,
@@ -79,7 +83,10 @@ class ResulScreen extends StatelessWidget {
                         ),
                         Expanded(
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.popAndPushNamed(context, '/quiz',
+                                  arguments: result.category);
+                            },
                             child: Text('Play again'),
                             style: ElevatedButton.styleFrom(
                               backgroundColor:

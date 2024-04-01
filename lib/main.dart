@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/data/categories_data.dart';
 import 'package:quiz_app/models/category.dart';
+import 'package:quiz_app/models/result.dart';
 import 'package:quiz_app/ui/screens/result_screen.dart';
 import 'utils/constants.dart';
 import 'ui/screens/home_screen.dart';
@@ -30,11 +31,9 @@ class QuizApp extends StatelessWidget {
         },
         '/result': (context) {
           // retrieve the passed argument
-          final finalScore = ModalRoute.of(context)!.settings.arguments as int;
+          final result = ModalRoute.of(context)!.settings.arguments as Result;
 
-          return ResulScreen(
-            score: finalScore,
-          );
+          return ResulScreen(result: result);
         }
       },
       theme: ThemeData(

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+import 'dart:io';
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
@@ -11,16 +13,47 @@ class QuizProvider with ChangeNotifier {
   int _currentQuestionIndex = 0;
   int _score = 0;
   List<Question> _questions = [];
+  List<Icon> _scoreKeeper = [];
 
   QuizProvider({required this.category}) {
     initializeQuestions();
+    initializeScoreKeeper();
+  }
+
+  List<Icon> get scoreKeeper => _scoreKeeper;
+
+  void initializeScoreKeeper() {
+    for (int i = 0; i < getNumberOfQuestions(); i++) {
+      _scoreKeeper.add(
+        Icon(
+          Icons.circle_rounded,
+          color: _questions[_currentQuestionIndex].color,
+        ),
+      );
+    }
+  }
+
+  set questionColor(bool isAnswerCorrect) => isAnswerCorrect
+      ? _scoreKeeper[_currentQuestionIndex] = Icon(
+          Icons.circle_rounded,
+          color: Colors.green,
+        )
+      : _scoreKeeper[_currentQuestionIndex] = Icon(
+          Icons.circle_rounded,
+          color: Colors.red,
+        );
+
+  int getNumberOfQuestions() {
+    return _questions.length;
   }
 
   void processUserAnswer(bool userAnswer) {
     if (userAnswer == getCurrentQuestionAnswer()) {
       print(++_score);
+      questionColor = true;
     } else {
       print(score);
+      questionColor = false;
     }
   }
 
@@ -34,15 +67,17 @@ class QuizProvider with ChangeNotifier {
     return _questions[_currentQuestionIndex].answer;
   }
 
-  String getCurrentQuestion() {
+  String getCurrentQuestionString() {
     return _questions[_currentQuestionIndex].question;
   }
 
-  void proceedQuiz(
-      {required bool userAnswer, required VoidCallback onQuizCompleted}) {
+  Future<void> proceedQuiz(
+      {required bool userAnswer, required VoidCallback onQuizCompleted}) async {
     processUserAnswer(userAnswer);
     if (_currentQuestionIndex + 1 == _questions.length) {
       // end of the quiz navigate to result page;
+      notifyListeners();
+      await Future.delayed(const Duration(milliseconds: 500));
       onQuizCompleted();
     } else {
       ++_currentQuestionIndex;
