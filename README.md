@@ -17,7 +17,7 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Visual
 
-| Homescreen                                       | Questionscreen                                                                                   |   |
-|--------------------------------------------------|--------------------------------------------------------------------------------------------------|---|
-| ![Main page of BizzCard](/assets/homescreen.jpg) | ![Main page of BizzCard with scrolled up QR Code area to be scanned](/assets/questionscreen.jpg) |   |
+| Homescreen                                        | Questionscreen                                            | Scorescreen                                         |
+|---------------------------------------------------|-----------------------------------------------------------|-----------------------------------------------------|
+| ![Home screen of QuizAPP](/assets/homescreen.jpg) | ![Question screen of QuizApp](/assets/questionscreen.jpg) | ![Score screen of QuizApp](/assets/scorescreen.jpg) |
 
