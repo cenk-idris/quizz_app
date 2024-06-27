@@ -1,6 +1,7 @@
 # Quiz App
 
 Quiz app consist of 5 distinct categories where user can choose or can press 'quick start' button for random category.
+Learned about app theming for consistent look and 'Provider' state manager.
 
 ## Features
 
