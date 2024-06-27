@@ -22,8 +22,7 @@ Ensure you have the following installed on your local machine:
 
 - Xcode (iOS) or Android Studio (Android)
 - [Flutter Version Manager](https://fvm.app/documentation/getting-started) 
-- Flutter SDK
-- Dart SDK
+
 
 ### Clone the repository
 
